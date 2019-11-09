@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<style>
+    body {
+      background-color: #D3D3D3;
+    }
+
+    .task {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      overflow: hidden;
+      background-color: #FFF;
+      transition: all 1s;
+    }
+
+    .task.openAndClose {
+      top: 100%;
+      height: 0;
+    }
+
+    .task__container {
+      margin-top: 50px;
+    }
+
+    .task__step--two {
+      display: none;
+    }
+
+    .task__step--final {
+      display: none;
+    }
+
+</style>
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+  $(document).ready(function() {
+    $('.js-startTask, .js-endTask').click(function() {
+        $('.task').toggleClass('openAndClose');
+      });
+
+      $(".js-btnOne").click(function () {
+        $('.task__step--one').hide();
+        console.log("Task one done");
+        $('.task__step--two').show();
+      });
+
+      $(".js-btnTwo").click(function () {
+        $('.task__step--two').hide();
+        console.log("Task two done");
+        $('.task__step--final').show();
+      });
+    });
+
+  </script>
+<title>Title of the document</title>
+</head>
+
+<body>
+  <section class="container task__container">
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-secondary btn-block js-startTask">
+          Start Task
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="task openAndClose">
+    <section class="container task__container">
+      <div class="row">
+        <div class="col-xs-12">
+
+                <div class="task__step--one">
+                  <div class="container">
+                    <div class="col-xs-6">
+                      <p>Make a selection on the first task.</p>
+                    </div>
+                    <div class="col-xs-6">
+                      <button class="btn btn-default btn-lg btn-block js-btnOne" id="taskOne">Task One</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="task__step--two">
+                  <div class="container">
+                    <div class="col-xs-6">
+                      <p>Now you get to try again on the second task.</p>
+                    </div>
+                    <div class="col-xs-6">
+                      <button class="btn btn-default btn-lg btn-block js-btnTwo" type="submit">Task Two</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="task__step--final">
+                  <button class="btn btn-primary btn-block js-endTask">End Task</button>
+                </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+
+</html>
